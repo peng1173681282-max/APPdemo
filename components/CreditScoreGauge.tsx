@@ -1,0 +1,1 @@
+// This file is no longer used in the redesigned "好分期" app.

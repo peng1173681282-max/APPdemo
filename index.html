@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>好分期 - 极致信贷</title>
+    <!-- 依赖库 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --anyihua-blue: #0076FF;
+            --anyihua-bg: #F7F9FC;
+            --anyihua-text: #333333;
+        }
+
+        body { 
+            font-family: 'Noto Sans SC', -apple-system, sans-serif;
+            background-color: var(--anyihua-bg);
+            color: var(--anyihua-text);
+            -webkit-font-smoothing: antialiased;
+            overscroll-behavior-y: contain;
+        }
+
+        .anyihua-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .quota-gradient {
+            background: linear-gradient(180deg, #EBF3FF 0%, #FFFFFF 100%);
+        }
+
+        .btn-anyihua {
+            background-color: var(--anyihua-blue);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .amount-font {
+            font-family: 'DIN Alternate', 'Helvetica Neue', Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .badge-red {
+            background-color: #FF4D4F;
+            color: white;
+            font-size: 10px;
+            padding: 1px 4px;
+            border-radius: 10px;
+            position: absolute;
+            top: -5px;
+            right: -8px;
+        }
+
+        /* 滚动公告动画 */
+        .marquee-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 1.5rem;
+        }
+
+        .marquee-text {
+            position: absolute;
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-150%); }
+        }
+
+        /* 弹窗滑入动画 */
+        @keyframes slide-up {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slide-up 0.3s ease-out forwards;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
+  }
+}
+</script>
+</head>
+<body class="antialiased">
+    <!-- React 挂载点 -->
+    <div id="root"></div>
+</body>
+</html>
