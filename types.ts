@@ -31,4 +31,4 @@ export interface Notification {
   isRead: boolean;
 }
 
-export type TabType = 'home' | 'loans' | 'apply' | 'advisor' | 'notifications' | 'service' | 'loan-records' | 'loan-details' | 'increase-limit' | 'welfare-center' | 'coupons' | 'short-drama';
+export type TabType = 'home' | 'loans' | 'apply' | 'advisor' | 'notifications' | 'service' | 'loan-records' | 'loan-details' | 'increase-limit' | 'welfare-center' | 'coupons' | 'short-drama' | 'novel-list';

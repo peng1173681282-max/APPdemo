@@ -217,7 +217,7 @@ const App: React.FC = () => {
           { label: '福利中心', icon: 'fa-gift', color: 'bg-red-50 text-red-500', tab: 'welfare-center' },
           { label: '优惠券', icon: 'fa-ticket-simple', color: 'bg-orange-100 text-orange-600', tab: 'coupons' },
           { label: '看短剧', icon: 'fa-circle-play', color: 'bg-purple-50 text-purple-600', tab: 'short-drama' },
-          { label: '看小说', icon: 'fa-book-open', color: 'bg-amber-50 text-amber-600' },
+          { label: '看小说', icon: 'fa-book-open', color: 'bg-amber-50 text-amber-600', tab: 'novel-list' },
           { label: '更多', icon: 'fa-ellipsis', color: 'bg-gray-100 text-gray-500' },
         ].map((item, i) => (
           <div key={i} onClick={() => item.tab && setActiveTab(item.tab as TabType)} className="flex flex-col items-center gap-1.5 cursor-pointer active:scale-90 transition-transform">
@@ -965,6 +965,100 @@ const App: React.FC = () => {
     </div>
   );
 
+  const renderNovelList = () => (
+    <div className="pb-24 pt-6 px-4 animate-in slide-in-from-right duration-300 min-h-screen bg-[#FDFDFD]">
+      <header className="flex items-center justify-between mb-8 sticky top-0 bg-[#FDFDFD]/80 backdrop-blur-md z-20 py-2">
+        <div className="flex items-center gap-4">
+          <button onClick={() => setActiveTab('home')} className="w-8 h-8 flex items-center justify-center text-gray-600 active:scale-90 transition-transform">
+            <i className="fas fa-chevron-left text-lg"></i>
+          </button>
+          <h1 className="text-xl font-bold text-gray-800">书城精选</h1>
+        </div>
+        <div className="flex items-center gap-2 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200">
+           <i className="fas fa-book-open text-orange-500 text-xs"></i>
+           <span className="text-[10px] font-bold text-orange-600">已读 124 章</span>
+        </div>
+      </header>
+
+      {/* Novel List */}
+      <div className="space-y-8">
+        {[
+          { 
+            title: '重生之我是全球首富', 
+            author: '金万两', 
+            tag: '都市神医', 
+            intro: '上一世被兄弟背叛，这一世我携未来二十年记忆归来，不仅要拿回属于我的一切，还要问鼎世界之巅！',
+            status: '连载中',
+            stats: '150.2万人在读',
+            image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&auto=format&fit=crop&q=80'
+          },
+          { 
+            title: '冷情总裁的替嫁娇妻', 
+            author: '一抹红唇', 
+            tag: '豪门虐恋', 
+            intro: '他，是京城只手遮天的冷面阎王。她，是代姐出嫁的落魄千金。那一夜之后，他竟对她食髓知味...',
+            status: '已完结',
+            stats: '89.4万人在读',
+            image: 'https://images.unsplash.com/photo-1543004629-ff5695872021?w=400&auto=format&fit=crop&q=80'
+          },
+          { 
+            title: '绝世天尊在校园', 
+            author: '逆天者', 
+            tag: '修真强者', 
+            intro: '一代仙帝重回高中时代，曾经欺我辱我者，这一世统统送你们下地狱！看我如何笑傲花都！',
+            status: '连载中',
+            stats: '210.6万人在读',
+            image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80'
+          },
+          { 
+            title: '禁欲大佬对我蓄谋已久', 
+            author: '甜甜猫', 
+            tag: '先婚后爱', 
+            intro: '外界传闻他从不近女色，直到有人看到他在雨夜卑微跪地，只为求她看他一眼。',
+            status: '连载中',
+            stats: '56.3万人在读',
+            image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&auto=format&fit=crop&q=80'
+          },
+          { 
+            title: '退婚后，大佬们排队宠我', 
+            author: '女王驾到', 
+            tag: '爽文女强', 
+            intro: '被渣男退婚后，她的六个亲哥哥全城发寻人启事：乖宝，跟哥哥们回家继承万亿家产！',
+            status: '已完结',
+            stats: '124.8万人在读',
+            image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&auto=format&fit=crop&q=80'
+          }
+        ].map((novel, i) => (
+          <div key={i} className="flex gap-4 active:scale-[0.98] transition-all">
+            <div className="w-24 h-32 rounded-lg overflow-hidden shadow-md shrink-0">
+               <img src={novel.image} className="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div className="flex-1 flex flex-col justify-between py-1">
+               <div>
+                  <h3 className="text-base font-bold text-gray-800 line-clamp-1">{novel.title}</h3>
+                  <div className="flex items-center gap-2 mt-1">
+                     <span className="text-[10px] text-blue-500 font-bold bg-blue-50 px-1.5 py-0.5 rounded">{novel.tag}</span>
+                     <span className="text-[10px] text-gray-400">{novel.author}</span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">{novel.intro}</p>
+               </div>
+               <div className="flex justify-between items-center mt-2">
+                  <span className="text-[10px] font-bold text-gray-400">{novel.stats}</span>
+                  <button className="text-[11px] font-bold text-blue-600 flex items-center gap-1">
+                     立即阅读 <i className="fas fa-chevron-right text-[8px]"></i>
+                  </button>
+               </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="py-12 text-center">
+          <p className="text-[10px] text-gray-300 font-medium">— 海量好书 精彩不断 —</p>
+      </div>
+    </div>
+  );
+
   const renderApply = () => (
     <div className="pb-40 pt-6 px-4 animate-in slide-in-from-right duration-300 bg-white min-h-screen">
       <div className="flex items-center gap-2 mb-8">
@@ -1494,6 +1588,7 @@ const App: React.FC = () => {
         {activeTab === 'welfare-center' && renderWelfareCenter()}
         {activeTab === 'coupons' && renderCoupons()}
         {activeTab === 'short-drama' && renderShortDrama()}
+        {activeTab === 'novel-list' && renderNovelList()}
         {activeTab === 'notifications' && renderNotifications()}
         {activeTab === 'service' && renderService()}
         {(activeTab === 'advisor') && (
@@ -1505,7 +1600,7 @@ const App: React.FC = () => {
         )}
       </div>
 
-      {(activeTab !== 'service' && activeTab !== 'apply' && activeTab !== 'loan-records' && activeTab !== 'loan-details' && activeTab !== 'increase-limit' && activeTab !== 'welfare-center' && activeTab !== 'coupons' && activeTab !== 'short-drama') && (
+      {(activeTab !== 'service' && activeTab !== 'apply' && activeTab !== 'loan-records' && activeTab !== 'loan-details' && activeTab !== 'increase-limit' && activeTab !== 'welfare-center' && activeTab !== 'coupons' && activeTab !== 'short-drama' && activeTab !== 'novel-list') && (
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md h-16 bg-white border-t border-gray-100 flex items-center justify-around z-50">
           {[
             { id: 'home', icon: 'fa-house-chimney', label: '首页' },
